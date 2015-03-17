@@ -24,20 +24,20 @@ convertsecs() {
 }
 
 # Get build version
-   PA_MAJOR=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MAJOR := *' | sed  's/PA_VERSION_MAJOR := //g')
-   PA_MINOR=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MINOR := *' | sed  's/PA_VERSION_MINOR := //g')
-   PA_MAINTENANCE=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MAINTENANCE := *' | sed  's/PA_VERSION_MAINTENANCE := //g')
-   PA_TAG=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_TAG := *' | sed  's/PA_VERSION_TAG := //g')
+   PA_MAJOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAJOR := *' | sed  's/PA_VERSION_MAJOR := //g')
+   PA_MINOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MINOR := *' | sed  's/PA_VERSION_MINOR := //g')
+   PA_MAINTENANCE=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAINTENANCE := *' | sed  's/PA_VERSION_MAINTENANCE := //g')
+   PA_TAG=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_TAG := *' | sed  's/PA_VERSION_TAG := //g')
 #
-   PSD_MAJOR=$(cat vendor/psd/vendor.mk | grep 'PSD_VERSION_MAJOR := *' | sed  's/PSD_VERSION_MAJOR := //g')
-   PSD_MINOR=$(cat vendor/psd/vendor.mk | grep 'PSD_VERSION_MINOR := *' | sed  's/PSD_VERSION_MINOR := //g')
-   PSD_MAINTENANCE=$(cat vendor/psd/vendor.mk | grep 'PSD_VERSION_MAINTENANCE := *' | sed  's/PSD_VERSION_MAINTENANCE := //g')
-   PSD_TAG=$(cat vendor/psd/vendor.mk | grep 'PSD_TYPE := *' | sed  's/PSD_TYPE := //g')
+   DUD_MAJOR=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MAJOR := *' | sed  's/DUD_VERSION_MAJOR := //g')
+   DUD_MINOR=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MINOR := *' | sed  's/DUD_VERSION_MINOR := //g')
+   DUD_MAINTENANCE=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MAINTENANCE := *' | sed  's/DUD_VERSION_MAINTENANCE := //g')
+   DUD_TAG=$(cat vendor/dud/vendor.mk | grep 'DUD_TYPE := *' | sed  's/DUD_TYPE := //g')
 # Get build version
-MAJOR=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MAJOR := *' | sed  's/PA_VERSION_MAJOR := //g')
-MINOR=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MINOR := *' | sed  's/PA_VERSION_MINOR := //g')
-MAINTENANCE=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_MAINTENANCE := *' | sed  's/PA_VERSION_MAINTENANCE := //g')
-TAG=$(cat vendor/psd/vendor.mk | grep 'PA_VERSION_TAG := *' | sed  's/PA_VERSION_TAG := //g')
+MAJOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAJOR := *' | sed  's/PA_VERSION_MAJOR := //g')
+MINOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MINOR := *' | sed  's/PA_VERSION_MINOR := //g')
+MAINTENANCE=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAINTENANCE := *' | sed  's/PA_VERSION_MAINTENANCE := //g')
+TAG=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_TAG := *' | sed  's/PA_VERSION_TAG := //g')
 
 if [ -n "$TAG" ]; then
         VERSION=$MAJOR.$MINOR$MAINTENANCE-$TAG
@@ -56,9 +56,9 @@ export CHANGELOG=true
 #export USE_PREBUILT_CHROMIUM=1
 
 # start
-   echo -e "Building Paranoid SaberDroid for $DEVICE";
+   echo -e "Building Darkobas uber DROID for $DEVICE";
    echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
-   echo -e "$PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
+   echo -e "$DUD_TAG $DUD_MAJOR.$DUD_MINOR for $DEVICE";
    echo -e "";
    echo -e ""
  
@@ -78,7 +78,7 @@ read n
 case $n in
 1)
 echo -e "generating changelog....."
-./vendor/psd/utils/changelog.sh
+./vendor/dud/utils/changelog.sh
 echo -e "$PRODUCT_OUT/CHANGELOG.txt created"
 ;;
 2)
@@ -89,36 +89,43 @@ esac
 
 echo "generate OpenDelta ?
 	1) yes
-	2) no"
+	2) no
+	3) dev"
 read n
 case $n in
 1)
-export OPENDELTA=true
+export OPENDELTA=1
 ;;
 2)
 echo "skip OpenDelta"
-export OPENDELTA=false
+export OPENDELTA=2
+;;
+3)
+export OPENDELTA=3
 ;;
 *) invalid option;;
 esac
 
-lunch psd_$DEVICE-userdebug
+lunch DuD_$DEVICE-userdebug
    echo -e "Starting build...";
 rm $OUT/system/build.prop
 rm $OUT/*.zip
 rm $OUT/*.md5sum
 START=$(date +%s)
 
-mka bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
+mka bacon 2>&1 | tee build-logs/DuD_$DEVICE-$timestamp.txt
 
-if [ "$OPENDELTA" = true ]; then
+if [ "$OPENDELTA" = 1 ]; then
 opendelta.sh $DEVICE
+fi
+if [ "$OPENDELTA" = 3 ];then
+opendeltadev.sh $DEVICE
 fi
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))
 # we're done
-   echo -e "Finished building Darkobas PSD RoM in $(convertsecs $DIFF)";
+   echo -e "Finished building Darkobas uber Droid RoM in $(convertsecs $DIFF)";
    echo -e "If for some reason your build failed,";
    echo -e "please check the 'build-logs' directory to figure out why.";
    echo -e "";

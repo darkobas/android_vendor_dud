@@ -33,4 +33,4 @@ PRODUCT_COPY_FILES += \
 
 # Proprietary latinime lib needed for Keyboard swyping
 PRODUCT_COPY_FILES += \
-    vendor/psd/prebuilt/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/dud/prebuilt/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so

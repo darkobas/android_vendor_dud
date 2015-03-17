@@ -34,8 +34,8 @@ PRODUCT_COPY_FILES += \
 
 # HFM Files
 PRODUCT_COPY_FILES += \
-	vendor/psd/prebuilt/etc/hosts.alt:system/etc/hosts.alt \
-	vendor/psd/prebuilt/etc/hosts.og:system/etc/hosts.og
+	vendor/dud/prebuilt/etc/hosts.alt:system/etc/hosts.alt \
+	vendor/dud/prebuilt/etc/hosts.og:system/etc/hosts.og
 
 # Gapps backup script
 PRODUCT_COPY_FILES += \
@@ -46,20 +46,20 @@ PRODUCT_COPY_FILES += \
 
 # SuperSU
 PRODUCT_COPY_FILES += \
-    vendor/psd/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-    vendor/psd/prebuilt/etc/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon  
+    vendor/dud/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+    vendor/dud/prebuilt/etc/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon  
 
 # PRODUCT_PROPERTY_OVERRIDES += \
 #    persist.sys.root_access=3
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/psd/prebuilt/common/otasigcheck.sh:system/bin/otasigcheck.sh
+    vendor/dud/prebuilt/common/otasigcheck.sh:system/bin/otasigcheck.sh
 
 # Layers Theme
 PRODUCT_COPY_FILES += \
-    vendor/psd/prebuilt/permissions/com.layers.theme.xml:system/etc/permissions/com.layers.theme.xml \
-    vendor/psd/prebuilt/common/etc/Layers.apk:system/app/Layers/Layers.apk
+    vendor/dud/prebuilt/permissions/com.layers.theme.xml:system/etc/permissions/com.layers.theme.xml \
+    vendor/dud/prebuilt/common/etc/Layers.apk:system/app/Layers/Layers.apk
 
 #Include google messenger
 PRODUCT_COPY_FILES += \
-    vendor/psd/prebuilt/common/etc/PrebuiltBugle.apk:system/app/PrebuiltBugle/PrebuiltBugle.apk
+    vendor/dud/prebuilt/common/etc/PrebuiltBugle.apk:system/app/PrebuiltBugle/PrebuiltBugle.apk

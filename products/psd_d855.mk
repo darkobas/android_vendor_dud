@@ -1,29 +1,33 @@
-ifeq (psd_d855,$(TARGET_PRODUCT))
+ifeq (DuD_d855,$(TARGET_PRODUCT))
+
 
 # Use 4.x for the kernel
-GCC_VERSION_ARM := 4.8
+GCC_VERSION_ARM := 4.9
+GCC_VERSION_ARMEABI := 4.8
 # Override ARM settings
-SM_ARM_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(GCC_VERSION_ARM)
-SM_ARM := $(shell $(SM_ARM_PATH)/bin/arm-eabi-gcc --version)
 
-ifneq ($(filter (UBERTC) (UBERTC%),$(SM_ARM)),)
-# GCC Colors only works on gcc >=4.9.x
-export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-SM_ARM_VERSION := $(filter 4.8 4.8.% 4.9 4.9.% 4.10 4.10.%,$(SM_ARM))
-SM_ARM_NAME := $(filter (UBERTC) (UBERTC%),$(SM_ARM))
-SM_ARM_DATE := $(filter 20150% 20151% 20140% 20141%,$(SM_ARM))
-SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
-ifeq ($(filter (UBERTC%),$(SM_ARM)),)
-SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATUS)
-else
-SM_ARM_VERSION := $(SM_ARM_NAME)-$(SM_ARM_DATE)-$(SM_ARM_STATUS)
-endif
-endif
+# Path to toolchain
+UBER_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_ARMEABI)
+UBER_AND := $(shell $(UBER_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 
-
-ifneq ($(SM_ARM_VERSION),)
+# Find strings in version info
+ifneq ($(filter (UBERTC%),$(UBER_AND)),)
+UBER_AND_NAME := $(filter (UBERTC%),$(UBER_AND))
+# UBER_AND_DATE := $(filter 20150% 20151%,$(UBER_AND))
+UBER_AND_VERSION := $(UBER_AND_NAME)-$(UBER_AND_DATE)
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sm.arm=$(SM_ARM_VERSION)
+     ro.uber.android=$(UBER_AND_VERSION)
+endif
+
+UBER_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi--$(GCC_VERSION_ARM)
+UBER_KERNEL := $(shell $(UBER_KERNEL_PATH)/bin/arm-eabi-gcc --version)
+
+ifneq ($(filter (UBERTC%),$(UBER_KERNEL)),)
+UBER_KERNEL_NAME := $(filter (UBERTC%),$(UBER_KERNEL))
+UBER_KERNEL_DATE := $(filter 20150% 20151%,$(UBER_KERNEL))
+UBER_KERNEL_VERSION := $(UBER_KERNEL_NAME)-$(UBER_KERNEL_DATE)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.uber.kernel=$(UBER_KERNEL_VERSION)
 endif
 
 # Set -fstrict-aliasing flag to global for hammerhead
@@ -32,13 +36,13 @@ GRAPHITE_OPTS := true
 FLOOP_NEST_OPTIMIZE := true
 STRICT_ALIASING :=true
 KRAIT_TUNINGS := true
-include vendor/psd/configs/psd_modular.mk
+include vendor/dud/configs/DuD_modular.mk
 
 # Inherit telephony common stuff
-$(call inherit-product, vendor/psd/configs/telephony.mk)
+$(call inherit-product, vendor/dud/configs/telephony.mk)
 
 # Include AOSPA common configuration
-include vendor/psd/main.mk
+include vendor/dud/main.mk
 
 # Inherit device configuration
 $(call inherit-product, device/lge/d855/d855.mk)
@@ -49,7 +53,7 @@ PRODUCT_PACKAGES += \
     AudioFX
 
 # Override AOSP build properties
-PRODUCT_NAME := psd_d855
+PRODUCT_NAME := DuD_d855
 PRODUCT_DEVICE := d855
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-D855

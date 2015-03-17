@@ -1,12 +1,12 @@
 # Export rom name
-export VENDOR := psd
+export VENDOR := DuD
 
-# PSD version info
-PSD_VERSION_MAJOR := 3
-PSD_VERSION_MINOR := 5.9.6
-PSD_VERSION_MAINTENANCE :=
-PSD_TYPE := darkobas
-PSD_VERSION_TAG := BETA
+# DUD version info
+DUD_VERSION_MAJOR := 3
+DUD_VERSION_MINOR := 5.9.6
+DUD_VERSION_MAINTENANCE :=
+DUD_TYPE := darkobas
+DUD_VERSION_TAG := BETA
 
 # PA version info
 PA_VERSION_MAJOR := 5
