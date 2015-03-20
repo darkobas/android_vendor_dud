@@ -1,5 +1,5 @@
 # Export rom name
-export VENDOR := DuD
+export VENDOR := dud
 
 # DUD version info
 DUD_VERSION_MAJOR := 3
