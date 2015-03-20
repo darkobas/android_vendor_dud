@@ -14,12 +14,16 @@
 /sbin/minivold            u:object_r:vold_exec:s0
 
 #############################
-# performance-related sysfs files (CM)
-/sys/devices/system/cpu.*/cpufreq(/.*)? --  u:object_r:sysfs_devices_system_cpu:s0
-/sys/block/mmcblk.*/queue/scheduler  --    u:object_r:sysfs_devices_system_iosched:s0
+###########################
+# OmniROM common sepolicy
+#
 
-/data/hostapd(/.*)?         u:object_r:wifi_data_file:s0
-/data/misc/radio(/.*)?      u:object_r:radio_data_file:s0
+# performance-related sysfs files
+/sys/kernel/mm/ksm(/.*)?    u:object_r:sysfs_ksm:s0
+/sys/block/mmcblk[0-2]/queue(/.*)     u:object_r:sysfs_ioscheduler:s0
+/sys/block/zram(/.*)?       u:object_r:sysfs_zram:s0
+
+/system/bin/sysinit u:object_r:sysinit_exec:s0
 
 #############
 # Superuser's control sockets
