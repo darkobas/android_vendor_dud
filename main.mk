@@ -15,9 +15,7 @@
 include vendor/dud/vendor.mk
 include vendor/dud/configs/aosp_fixes.mk
 include vendor/dud/configs/system.mk
-include vendor/dud/configs/DuD_board.mk
 include vendor/dud/configs/DuD_overrides.mk
 include vendor/dud/configs/bootanimation.mk
 include vendor/dud/configs/version.mk
 include vendor/dud/configs/legacy_extras.mk
-include vendor/dud/configs/themes_common.mk
