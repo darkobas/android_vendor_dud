@@ -48,6 +48,6 @@
         <item>.*com.antutu.benchmark.*,2</item>
     </string-array> -->
 
-    <!-- Configuartion to set zen mode when silent mode is on -->
-    <bool name="config_setZenModeWhenSilentModeOn">true</bool>
+    <!-- Configuartion to set zen mode when silent mode is on
+    <bool name="config_setZenModeWhenSilentModeOn">true</bool> -->
 </resources>
