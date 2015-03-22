@@ -1,36 +1,18 @@
 #
 # This policy configuration will be used by all products that
-# inherit from CM
+# inherit from Omni
 #
 
 BOARD_SEPOLICY_DIRS += \
     vendor/dud/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    file.te \
     file_contexts \
+    file.te \
     genfs_contexts \
-    property_contexts \
-    seapp_contexts \
-    service_contexts \
-    adbd.te \
-    app.te \
-    auditd.te \
-    bootanim.te \
-    healthd.te \
-    hostapd.te \
     installd.te \
-    netd.te \
-    property.te \
-    recovery.te \
-    shell.te \
-    su.te \
+    seapp_contexts \
     sysinit.te \
-    system.te \
     system_app.te \
     system_server.te \
-    ueventd.te \
-    userinit.te \
-    vold.te \
-    zygote.te \
-    mac_permissions.xml
+    vold.te

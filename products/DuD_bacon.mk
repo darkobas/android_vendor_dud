@@ -1,8 +1,8 @@
 ifeq (DuD_bacon,$(TARGET_PRODUCT))
 
 # Use 4.x for the kernel
-GCC_VERSION_ARM := 4.9
-GCC_VERSION_ARMEABI := 4.9
+GCC_VERSION_ARM := 4.8
+GCC_VERSION_ARMEABI := 4.8
 # Override ARM settings
 
 # Path to toolchain
@@ -30,12 +30,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 # Set -fstrict-aliasing flag to global for hammerhead
-MAKE_STRICT_GLOBAL := true
-GRAPHITE_OPTS := true
-FLOOP_NEST_OPTIMIZE := true
-STRICT_ALIASING :=true
-KRAIT_TUNINGS := true
-USE_O3_OPTIMIZATIONS := true
+#MAKE_STRICT_GLOBAL := true
+#GRAPHITE_OPTS := true
+#FLOOP_NEST_OPTIMIZE := true
+#STRICT_ALIASING :=true
+#KRAIT_TUNINGS := true
+#USE_O3_OPTIMIZATIONS := true
 
 include vendor/dud/configs/DuD_modular.mk
 
