@@ -1,5 +1,5 @@
-add_lunch_combo DuD_bacon-userdebug
-add_lunch_combo DuD_d802-userdebug
-add_lunch_combo DuD_d855-userdebug
-add_lunch_combo DuD_flo-userdebug
-add_lunch_combo DuD_p5100-userdebug
+add_lunch_combo dud_bacon-userdebug
+add_lunch_combo dud_d802-userdebug
+add_lunch_combo dud_d855-userdebug
+add_lunch_combo dud_flo-userdebug
+add_lunch_combo dud_p5100-userdebug

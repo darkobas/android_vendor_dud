@@ -16,9 +16,39 @@
 PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/common
 PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/$(TARGET_PRODUCT)
 
+ifneq ($(filter dud_bacon dud_d802 dud_d855 dud_flo dud_p5100 dud_klte,$(TARGET_PRODUCT)),)
+    PRODUCT_COPY_FILES += \
+        vendor/dud/prebuilt/bootanimation/bootanimation.zip:system/media/bootanimation.zip
+endif
+
+ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-google
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
+endif
+
+# Google property overides
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.com.android.dateformat=dd-MM-yyyy
+
+# general properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.android.wifi-watchlist=GoogleGuest \
+    ro.setupwizard.enterprise_mode=1 \
+    persist.sys.root_access=1
+
+# enable ADB authentication if not on eng build
+ifneq ($(TARGET_BUILD_VARIANT),eng)
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+endif
+
 # Copy custom ramdisk
 PRODUCT_COPY_FILES += \
-    vendor/$(VENDOR)/prebuilt/etc/init.pa.rc:root/init.pa.rc
+    vendor/$(VENDOR)/prebuilt/etc/init.local.rc:root/init.omni.rc
 
 # init.d script support
 PRODUCT_COPY_FILES += \
@@ -63,3 +93,22 @@ PRODUCT_COPY_FILES += \
 #Include google messenger
 PRODUCT_COPY_FILES += \
     vendor/dud/prebuilt/common/etc/PrebuiltBugle.apk:system/app/PrebuiltBugle/PrebuiltBugle.apk
+
+# Enable SIP and VoIP on all targets
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+
+# Proprietary latinime lib needed for Keyboard swyping
+PRODUCT_COPY_FILES += \
+    vendor/dud/prebuilt/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+
+# Chromium Prebuilt
+ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+-include prebuilts/chromium/$(TARGET_DEVICE)/chromium_prebuilt.mk
+endif
+
+# Additional packages
+-include vendor/dud/configs/packages.mk
+
+# Versioning
+-include vendor/dud/configs/version.mk

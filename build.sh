@@ -23,12 +23,6 @@ convertsecs() {
  printf "%02d:%02d:%02d\n" $h $m $s
 }
 
-# Get build version
-   PA_MAJOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAJOR := *' | sed  's/PA_VERSION_MAJOR := //g')
-   PA_MINOR=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MINOR := *' | sed  's/PA_VERSION_MINOR := //g')
-   PA_MAINTENANCE=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_MAINTENANCE := *' | sed  's/PA_VERSION_MAINTENANCE := //g')
-   PA_TAG=$(cat vendor/dud/vendor.mk | grep 'PA_VERSION_TAG := *' | sed  's/PA_VERSION_TAG := //g')
-#
    DUD_MAJOR=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MAJOR := *' | sed  's/DUD_VERSION_MAJOR := //g')
    DUD_MINOR=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MINOR := *' | sed  's/DUD_VERSION_MINOR := //g')
    DUD_MAINTENANCE=$(cat vendor/dud/vendor.mk | grep 'DUD_VERSION_MAINTENANCE := *' | sed  's/DUD_VERSION_MAINTENANCE := //g')
@@ -57,7 +51,6 @@ export CHANGELOG=true
 
 # start
    echo -e "Building Darkobas uber DROID for $DEVICE";
-   echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
    echo -e "$DUD_TAG $DUD_MAJOR.$DUD_MINOR for $DEVICE";
    echo -e "";
    echo -e ""
@@ -106,14 +99,14 @@ export OPENDELTA=3
 *) invalid option;;
 esac
 
-lunch DuD_$DEVICE-userdebug
+lunch dud_$DEVICE-userdebug
    echo -e "Starting build...";
 rm $OUT/system/build.prop
 rm $OUT/*.zip
 rm $OUT/*.md5sum
 START=$(date +%s)
 
-mka bacon 2>&1 | tee build-logs/DuD_$DEVICE-$timestamp.txt
+mka bacon 2>&1 | tee build-logs/dud_$DEVICE-$timestamp.txt
 
 if [ "$OPENDELTA" = 1 ]; then
 opendelta.sh $DEVICE

@@ -4,10 +4,12 @@
 if [ -e /data/local/userinit.sh ];
 then
    log -p i -t userinit "Executing /data/local/userinit.sh";
-   /system/bin/sh /data/local/userinit.sh;
+   logwrapper /system/bin/sh /data/local/userinit.sh;
+   setprop omni.userinit.active 1;
 fi;
 
 if [ -d /data/local/userinit.d ];
 then
-   busybox run-parts /data/local/userinit.d;
+   logwrapper busybox run-parts /data/local/userinit.d;
+   setprop omni.userinit.active 1;
 fi;
