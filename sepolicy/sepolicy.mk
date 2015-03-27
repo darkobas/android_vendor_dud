@@ -12,6 +12,7 @@ BOARD_SEPOLICY_UNION += \
     genfs_contexts \
     installd.te \
     seapp_contexts \
+    service_contexts \
     sysinit.te \
     system_app.te \
     system_server.te \
