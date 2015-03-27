@@ -1,13 +1,12 @@
 ifeq (dud_bacon ,$(TARGET_PRODUCT))
-TARGET_GCC_VERSION := 4.9
-TARGET_ARCH := arm
+#GCC_VERSION_AND := 4.9
+#GCC_VERSION_ARM := 4.9
+USE_HOST_4_8=true
 # Set -fstrict-aliasing flag to global for hammerhead
-MAKE_STRICT_GLOBAL := true
 GRAPHITE_OPTS := true
 FLOOP_NEST_OPTIMIZE := true
 STRICT_ALIASING :=true
 KRAIT_TUNINGS := true
-ENABLE_GCCONLY := true
 include vendor/dud/configs/uber.mk
 
 TW_THEME := portrait_hdpi
