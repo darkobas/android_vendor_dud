@@ -9,8 +9,7 @@ endif
 PRODUCT_PACKAGES += \
     Apollo \
     audio_effects.conf \
-    DSPManager \
-    libcyanogen-dsp \
+    AudioFX \
     MonthCalendarWidget \
     OpenDelta \
     OmniSwitch \
@@ -36,5 +35,6 @@ PRODUCT_PACKAGES += \
     vim \
     ntfsfix \
     ntfs-3g \
-    mkntfs
+    mkntfs \
+    android-visualizer
 
