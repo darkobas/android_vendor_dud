@@ -87,3 +87,5 @@ ifneq (,$(GCC_OPTIMIZATION_LEVELS))
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.uber.flags=$(GCC_OPTIMIZATION_LEVELS)
 endif
+#include vendor/dud/configs/opti.mk
+
