@@ -16,7 +16,7 @@
 PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/common
 PRODUCT_PACKAGE_OVERLAYS += vendor/$(VENDOR)/overlay/$(TARGET_PRODUCT)
 
-ifneq ($(filter dud_bacon dud_d802 dud_d855 dud_flo dud_p5100 dud_klte,$(TARGET_PRODUCT)),)
+ifneq ($(filter dud_bacon dud_d802 dud_d855 dud_flo dud_p5100 dud_klte dud_hammerhead,$(TARGET_PRODUCT)),)
     PRODUCT_COPY_FILES += \
         vendor/dud/prebuilt/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 endif

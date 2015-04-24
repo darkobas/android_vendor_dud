@@ -3,3 +3,4 @@ add_lunch_combo dud_d802-userdebug
 add_lunch_combo dud_d855-userdebug
 add_lunch_combo dud_flo-userdebug
 add_lunch_combo dud_p5100-userdebug
+add_lunch_combo dud_hammerhead-userdebug
