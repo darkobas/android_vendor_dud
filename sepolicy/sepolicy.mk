@@ -15,6 +15,7 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     installd.te \
     property.te \
+    recovery.te \
     seapp_contexts \
     shell.te \
     sysinit.te \
