@@ -10,6 +10,7 @@ PRODUCT_PACKAGES += \
     Apollo \
     audio_effects.conf \
     AudioFX \
+    libcyanogen-dsp \
     MonthCalendarWidget \
     OpenDelta \
     OmniSwitch \

@@ -9,4 +9,6 @@ allow recovery tmpfs:sock_file create_file_perms;
 
 # /cache/recovery things: command and logs
 allow recovery recovery_cache_file:dir create_dir_perms;
+allow recovery recovery_cache_file:dir { search getattr };
 allow recovery recovery_cache_file:file create_file_perms;
+allow recovery recovery_cache_file:file getattr;
