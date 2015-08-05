@@ -16,9 +16,10 @@
   </signer>
 
   <!-- OpenDelta -->
-  <signer signature="@RELEASE" >
+  <signer signature="@platform" >
     <package name="eu.chainfire.opendelta" >
       <seinfo value="OpenDelta" />
+        <allow-all />
     </package>
   </signer>
 </policy>

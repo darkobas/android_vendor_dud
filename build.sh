@@ -47,7 +47,7 @@ fi
 export CHANGELOG=true
 
 #Use Prebuilt Chromium
-#export USE_PREBUILT_CHROMIUM=1
+export USE_PREBUILT_CHROMIUM=1
 
 # start
    echo -e "Building Darkobas uber DROID for $DEVICE";

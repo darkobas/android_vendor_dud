@@ -6,7 +6,7 @@ GRAPHITE_OPTS := true
 #FLOOP_NEST_OPTIMIZE := true
 STRICT_ALIASING :=true
 #KRAIT_TUNINGS := true
-include vendor/dud/configs/uber.mk
+#include vendor/dud/configs/uber.mk
 
 TW_THEME := portrait_hdpi
 
@@ -20,7 +20,8 @@ $(call inherit-product, device/oppo/bacon/dud_bacon.mk)
 # next camera
 CAMERA_NEXT := true
 PRODUCT_PACKAGES += \
-    CameraNext 
+    CameraNext \
+    SnapdragonCamera
 
 # Override AOSP build properties
 PRODUCT_NAME := dud_bacon
