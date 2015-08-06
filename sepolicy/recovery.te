@@ -12,3 +12,6 @@ allow recovery recovery_cache_file:dir create_dir_perms;
 allow recovery recovery_cache_file:dir { search getattr };
 allow recovery recovery_cache_file:file create_file_perms;
 allow recovery recovery_cache_file:file getattr;
+
+# set system properties for various things
+allow recovery system_prop:property_service set;
