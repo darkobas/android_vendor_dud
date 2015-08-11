@@ -20,7 +20,6 @@ $(call inherit-product, device/oppo/bacon/dud_bacon.mk)
 # next camera
 CAMERA_NEXT := true
 PRODUCT_PACKAGES += \
-    CameraNext \
     SnapdragonCamera
 
 # Override AOSP build properties
