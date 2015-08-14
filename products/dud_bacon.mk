@@ -26,7 +26,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_NAME := dud_bacon
 PRODUCT_DEVICE := bacon
 PRODUCT_BRAND := Oneplus
-PRODUCT_MODEL := One
+PRODUCT_MODEL := A0001
 PRODUCT_MANUFACTURER := Oneplus
 
 # Set build fingerprint / ID / Product Name ect.
