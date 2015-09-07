@@ -1,4 +1,5 @@
 add_lunch_combo dud_bacon-userdebug
+add_lunch_combo dud_bacon-user
 add_lunch_combo dud_d802-userdebug
 add_lunch_combo dud_d855-userdebug
 add_lunch_combo dud_flo-userdebug
